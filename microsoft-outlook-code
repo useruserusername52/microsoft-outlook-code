@@ -1,0 +1,23 @@
+import win32com.client
+
+def send_email(subject, body, to_address):
+    outlook = win32com.client.Dispatch("Outlook.Application")
+    mail = outlook.CreateItem(0)  # 0 represents the Outlook Mail Item
+
+    mail.Subject = subject
+    mail.Body = body
+    mail.To = to_address
+
+    # Uncomment the following line if you want to display the email before sending
+    # mail.Display()
+
+    mail.Send()
+
+if __name__ == "__main__":
+    email_subject = "Hello from Python!"
+    email_body = "This is a test email sent using Python and Outlook."
+    recipient_address = "recipient@example.com"
+
+    send_email(email_subject, email_body, recipient_address)
+
+    print("Email sent successfully!")
